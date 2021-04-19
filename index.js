@@ -28,15 +28,16 @@ console.log(processFirstItem(['foo','bar'],function(str){return str+str}));
   Study the code for counter1 and counter2, then answer the questions below.
   
   1. What is the difference between counter1 and counter2?
-  
+    Counter1 is created by a counter creator function counterMaker. Counter2 is what a counter created by counterMaker would be if it wasn't created with counter maker, but standalone. 
   2. Which of the two uses a closure? How can you tell?
-  
+      The counter maker uses a closure evidenced by how there is a function defined within a function that then has to look into the parent function scope which has count defined.
   3. In what scenario would the counter1 code be preferable? In what scenario would 
      counter2 be better?  
+    Counter1 is more useful if you will need to instantiate multiple counters to keep track of multiple counts. Counter2 is more useful in a situation where only one counter will ever be necessary for the given program.
 */
 
 // counter1 code
-function counterMaker() {
+function counterMaker() {                                // the counter maker has the ability to initiate multiple counters, each assigned to a new counter name, like counter1
   let count = 0;
   return function counter() {
    return count++;
@@ -45,7 +46,7 @@ function counterMaker() {
 
 const counter1 = counterMaker();
 
-// counter2 code
+// counter2 code                                     // this is a single instance of a counter unlike above
 let count = 0;
 
 function counter2() {
@@ -62,8 +63,8 @@ Use the inning function below to do the following:
 NOTE: This will be a callback function for the tasks below
 */
 
-function inning(/*Code Here*/){
-    /*Code Here*/
+function inning(){
+    return Math.floor(Math.random()*3);
 }
 
 
