@@ -74,7 +74,6 @@ Use the finalScore function below to do the following:
   2. Receive a number of innings to be played
   3. After each inning, update the score of the home and away teams
   4. After the last inning, return an object containing the final (total) score of the innings played
-  
   For example: invoking finalScore(inning, 9) might return this object:
 {
   "Home": 11,
@@ -82,8 +81,21 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-function finalScore(/*code Here*/){
-  /*Code Here*/
+function finalScore(inningcb, numInnings){
+  let homeScore = 0;
+  let awayScore = 0;
+  
+  for (let i = 0; i < numInnings; i++){
+    homeScore = homeScore + inningcb();
+    awayScore = awayScore + inningcb();
+  }
+  
+  let object = {
+    Home: homeScore,
+    Away: awayScore,
+  }
+  
+  return object;
 }
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
