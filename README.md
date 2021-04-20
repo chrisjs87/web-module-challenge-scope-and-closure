@@ -45,6 +45,9 @@ Find the file `index.js` and complete the tasks.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+
+Closure is when a Function used within another function must look from child to parent in order to find 'closure', looking for variable values outside of the child's scope, but available in the parent's scope.
+
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -66,8 +69,16 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+
+It is used where the anonymous function acquires a value for name. The anonymous function must reach outside of it's lexical scope and pull the value for name from the argument that would be passed into the personalDice function's scope.
+
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+
+Dan's name will always be the same, but the number rolled can always change each instance of the function.
+
 c. What is the lexical scope of `newRoll`? 
+
+newRoll's lexical scope is within the anonymous function.
 
 
 ### Task 3 - Stretch Goals
