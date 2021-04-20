@@ -103,13 +103,12 @@ Use the getInningScore() function below to do the following:
   1. Receive a callback function - you will pass in the inning function from task 2 as your argument 
   2. Return an object with a score for home and a score for away that populates from invoking the inning callback function */
 
-function getInningScore(inning) {
+function getInningScore(inningcb) {
   return {
-    Home: inning(),
-    Away: inning()
+    Home: inningcb(),
+    Away: inningcb()
   };
 }
-
 
 /* ⚾️⚾️⚾️ Task 5: scoreboard() ⚾️⚾️⚾️
 Use the scoreboard function below to do the following:
@@ -152,12 +151,23 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(getInningScorecb, inningcb, numInnings) {
+  let finalTally = [];   // this will contain strings with each innings info in it
+  let homeScore = 0;
+  let awayScore = 0;
+  for(let i = 0; i < numInnings; i++){
+    let teamScores = getInningScorecb(inningcb);   //this returns an object with both teams scores
+    homeScore = homeScore + teamScores.Home;
+    awayScore = awayScore + teamScores.Away;
+    finalTally.push(`Inning ${i+1}: Away ${teamScores.Away} - Home ${teamScores.Home}`);
+  }
+  if(homeScore === awayScore){
+    finalTally.push(`This game will require extra innings: Away ${awayScore} - Home ${homeScore}`);
+  }else{
+    finalTally.push(`Final Score: Away ${awayScore} - Home ${homeScore}`);
+  }
+  return finalTally;
 }
-
-
-
 
 /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑 */
 function foo(){
